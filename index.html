@@ -16,14 +16,9 @@
             z-index: 2000; color: white;
         }
 
-        #logo-container {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
+        #logo-container { margin-bottom: 20px; text-align: center; }
         #logo-container img {
-            max-width: 600px; /* Regola la grandezza del logo */
-            width: 80%;
+            max-width: 600px; width: 80%;
             filter: drop-shadow(0 0 20px rgba(180, 0, 0, 0.5));
             animation: pulse-logo 3s infinite ease-in-out;
         }
@@ -67,31 +62,30 @@
         .player-list {
             font-size: 12px; color: #888; min-height: 40px;
             border-top: 1px solid #333; padding-top: 5px;
-            font-family: monospace;
+            font-family: monospace; white-space: pre-wrap;
         }
 
-        /* --- SELEZIONE SQUADRE (Nascosto di default) --- */
+        /* --- SELEZIONE SQUADRE --- */
         #team-selection-panel {
-            display: none; /* Attivato via JS */
-            flex-direction: row; gap: 15px; margin-top: 20px;
+            display: none; flex-direction: row; gap: 15px; margin-top: 20px;
             animation: slideDown 0.3s ease-out;
         }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
-        .team-block { width: 180px; text-align: center; }
+        .team-block { width: 180px; text-align: center; background: rgba(0,0,0,0.5); padding: 5px; border-radius: 4px; }
         .team-btn {
             width: 100%; padding: 15px; font-weight: 900; cursor: pointer; border: 2px solid rgba(255,255,255,0.2);
             font-size: 14px; text-transform: uppercase; color: white;
             text-shadow: 1px 1px 0 #000; transition: transform 0.2s;
         }
-        .team-btn:hover { transform: scale(1.1); z-index: 10; }
+        .team-btn:hover { transform: scale(1.05); z-index: 10; }
 
-        .team-rosikoni { background: #b71c1c; border-color: #ff5252; } /* Rosso */
-        .team-trimoni { background: #000000; border-color: #444; } /* Nero */
-        .team-fattoni { background: #76ff03; color: black; text-shadow: none; border-color: #b2ff59; } /* Verde Acido */
-        .team-squagliati { background: #9c27b0; border-color: #e040fb; } /* Viola */
+        .team-rosikoni { background: #b71c1c; border-color: #ff5252; } 
+        .team-trimoni { background: #000000; border-color: #444; } 
+        .team-fattoni { background: #76ff03; color: black; text-shadow: none; border-color: #b2ff59; } 
+        .team-squagliati { background: #9c27b0; border-color: #e040fb; } 
 
-        .team-list { margin-top: 5px; font-size: 11px; color: #aaa; min-height: 20px; }
+        .team-list { margin-top: 5px; font-size: 11px; color: #fff; min-height: 20px; font-weight: bold; font-family: monospace; }
 
         .back-to-mode { 
             margin-top: 20px; background: transparent; border: 1px solid #666; color: #aaa; 
@@ -99,7 +93,7 @@
         }
 
         /* --- HUD DI GIOCO --- */
-        #game-ui { display: none; } /* Nascosto nel menu */
+        #game-ui { display: none; }
         
         .top-controls { position: absolute; top: 20px; left: 20px; z-index: 100; display: flex; gap: 10px; }
         .btn { padding: 8px 16px; color: white; border: 1px solid rgba(255,255,255,0.3); cursor: pointer; font-weight: bold; font-family: inherit; text-transform: uppercase; font-size: 12px; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); transition: all 0.2s; border-radius: 4px; }
@@ -111,16 +105,27 @@
         #audio-btn { border-bottom: 2px solid #00bfff; }
         #change-name-btn { border-bottom: 2px solid #f39c12; }
 
-        /* Stili aggiuntivi del gioco originale */
         #action-bar { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 6px; background: rgba(0, 0, 0, 0.85); padding: 6px; border-radius: 6px; border: 1px solid #444; z-index: 50; box-shadow: 0 0 20px rgba(0,0,0,0.8); }
         .separator { width: 2px; height: 40px; background: #555; margin: 0 4px; }
         .action-slot { width: 50px; height: 50px; background: #222; border: 2px solid #555; position: relative; cursor: pointer; border-radius: 4px; overflow: hidden; transition: border-color 0.1s; }
         .action-slot.active { border-color: #ffd700; box-shadow: 0 0 8px rgba(255, 215, 0, 0.6) inset; }
+        .action-slot.channeling { border-color: #fff; box-shadow: 0 0 15px #fff inset; animation: pulse-border 1s infinite; }
+        @keyframes pulse-border { 0% { border-color: #fff; box-shadow: 0 0 5px #fff inset; } 50% { border-color: #888; box-shadow: 0 0 15px #fff inset; } 100% { border-color: #fff; box-shadow: 0 0 5px #fff inset; } }
+
         .key-label { position: absolute; top: 2px; right: 4px; font-size: 11px; color: #ccc; font-weight: bold; text-shadow: 1px 1px 0 #000; z-index: 10; font-family: monospace; }
         .spell-icon { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 24px; z-index: 1; background: radial-gradient(circle, #333 0%, #111 100%); line-height: 1; }
+        
+        /* Conversion Icons Style (REINSERITO) */
+        .conv-icon { font-size: 14px; font-weight: bold; display: block; text-shadow: 1px 1px 0 #000; }
+        .plus-red { color: #ff5555; } .minus-yellow { color: #ffd700; } 
+        .plus-blue { color: #5555ff; } .minus-red { color: #ff5555; } 
+        .plus-yellow { color: #ffd700; } .minus-blue { color: #5555ff; }
+
         .cooldown-overlay { position: absolute; bottom: 0; left: 0; width: 100%; height: 0%; background: rgba(0, 0, 0, 0.7); z-index: 5; pointer-events: none; transition: height 0.1s linear; }
         .slot-q .spell-icon { color: #fff; text-shadow: 0 0 5px cyan; }
         .slot-1 .spell-icon { color: #00ffff; } .slot-2 .spell-icon { color: #ffffff; } .slot-3 .spell-icon { color: #ff6600; } .slot-4 .spell-icon { color: #aa00ff; } .slot-r .spell-icon { color: #00ff00; }
+        #slot-5 .spell-icon, #slot-6 .spell-icon, #slot-7 .spell-icon { color: white; }
+
         #ui-container { position: absolute; bottom: 100px; left: 20px; width: 250px; color: white; z-index: 10; background: rgba(0, 0, 0, 0.5); padding: 10px; border: 1px solid #444; pointer-events: none; border-radius: 4px; }
         .bar-container { width: 100%; height: 16px; background: #222; margin-bottom: 4px; position: relative; border-radius: 2px; overflow: hidden; }
         .bar { height: 100%; transition: width 0.2s; }
@@ -131,7 +136,6 @@
         #log { position: absolute; top: 60px; right: 10px; width: 300px; height: 200px; overflow: hidden; text-align: right; color: #ccc; font-size: 12px; pointer-events: none; display: flex; flex-direction: column-reverse; z-index: 5; }
         .log-entry { margin-bottom: 2px; text-shadow: 1px 1px 0 #000; background: rgba(0,0,0,0.3); padding: 2px 5px; border-radius: 2px; display: inline-block; align-self: flex-end;}
         
-        /* Modali */
         .modal { display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(20, 20, 20, 0.95); border: 1px solid #444; padding: 20px; z-index: 200; color: white; min-width: 400px; border-radius: 8px; box-shadow: 0 0 30px rgba(0,0,0,0.8); text-align: center; max-height: 80vh; overflow-y: auto; }
         .modal h2 { margin-top: 0; color: #ffd700; border-bottom: 1px solid #444; padding-bottom: 10px; }
         .key-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding: 8px 0; font-size: 14px; }
@@ -157,7 +161,7 @@
             </div>
             <div class="mode-card">
                 <button class="mode-btn btn-squadre" onclick="showTeamSelection()">SQUADRE</button>
-                <div class="player-list" id="list-teams">Giocatori: -</div>
+                <div class="player-list" id="list-teams">In Squadra: -</div>
             </div>
             <div class="mode-card">
                 <button class="mode-btn btn-spettatore" onclick="joinGame('SPECTATOR')">SPETTATORE</button>
@@ -186,7 +190,7 @@
         
         <button id="back-to-menu-btn" class="back-to-mode" onclick="resetMenu()">ANNULLA</button>
 
-        <div style="margin-top: 30px; font-size: 10px; color: #444;">RAGE QUIT v1.1 - Multiplayer Build</div>
+        <div style="margin-top: 30px; font-size: 10px; color: #444;">RAGE QUIT v1.2 - Transfer Fix</div>
     </div>
 
     <div id="game-ui">
@@ -211,6 +215,11 @@
             <div id="slot-3" class="action-slot slot-3"><div class="key-label">3</div><div class="spell-icon">🔥</div><div class="cooldown-overlay"></div></div>
             <div id="slot-4" class="action-slot slot-4"><div class="key-label">4</div><div class="spell-icon">⛰️</div><div class="cooldown-overlay" id="spikes-cd"></div></div>
             <div id="slot-r" class="action-slot slot-r"><div class="key-label">R</div><div class="spell-icon">💚</div><div class="cooldown-overlay" id="heal-cd"></div></div>
+            
+            <div class="separator"></div>
+            <div id="slot-5" class="action-slot" onclick="window.performConversion(1)"><div class="key-label">5</div><div class="spell-icon"><span class="conv-icon plus-red">+♥</span><span class="conv-icon minus-yellow">-⚡</span></div><div class="cooldown-overlay" id="conv1-cd"></div></div>
+            <div id="slot-6" class="action-slot" onclick="window.performConversion(2)"><div class="key-label">6</div><div class="spell-icon"><span class="conv-icon plus-blue">+💧</span><span class="conv-icon minus-red">-♥</span></div><div class="cooldown-overlay" id="conv2-cd"></div></div>
+            <div id="slot-7" class="action-slot" onclick="window.performConversion(3)"><div class="key-label">7</div><div class="spell-icon"><span class="conv-icon plus-yellow">+⚡</span><span class="conv-icon minus-blue">-💧</span></div><div class="cooldown-overlay" id="conv3-cd"></div></div>
         </div>
 
         <div id="ui-container">
@@ -246,18 +255,16 @@
         let socket = null;
         let myId = null;
         let myUsername = "Guerriero";
-        let currentGameMode = null; // 'FFA', 'TEAM', 'SPECTATOR'
+        let currentGameMode = null; 
         let currentTeam = null; 
         let isConnected = false;
 
-        // UI References
         const mainMenu = document.getElementById('main-menu');
         const gameUI = document.getElementById('game-ui');
         const teamPanel = document.getElementById('team-selection-panel');
         const modePanel = document.getElementById('mode-selection');
         const backBtn = document.getElementById('back-to-menu-btn');
 
-        // Init Connection for Menu Stats
         if (typeof io !== 'undefined') {
             socket = io({ reconnection: true, transports: ['websocket', 'polling'] });
             
@@ -266,16 +273,40 @@
                 myId = socket.id;
             });
 
-            // Aggiornamento liste giocatori nel menu
+            // Aggiornamento liste: chiamato quando entrano nuovi giocatori o cambiano nome
             socket.on('currentPlayers', (players) => {
                 updateMenuLists(players);
-                // Aggiorna anche i giocatori in game se siamo dentro
                 Object.keys(players).forEach((id) => { if (id === myId) return; if (!otherPlayers[id]) addOtherPlayer(players[id]); });
             });
             
             socket.on('newPlayer', (playerInfo) => { 
                 addToLog(playerInfo.username + " è entrato!", "heal"); 
+                // Forza un aggiornamento della lista quando entra qualcuno
+                // (Nota: in un server reale chiederemmo la lista completa, qui ci affidiamo all'evento)
                 if (!otherPlayers[playerInfo.id]) addOtherPlayer(playerInfo); 
+            });
+
+            // IMPORTANTE: Aggiorna la lista quando un giocatore cambia nome/team
+            socket.on('updateUsername', (data) => {
+                if (otherPlayers[data.id]) {
+                    otherPlayers[data.id].username = data.username;
+                    const oldLabel = otherPlayers[data.id].mesh.children.find(c => c.userData.isLabel);
+                    if (oldLabel) otherPlayers[data.id].mesh.remove(oldLabel);
+                    const newLabel = createPlayerLabel(data.username); newLabel.position.y = 14; newLabel.userData.isLabel = true; otherPlayers[data.id].mesh.add(newLabel); otherPlayers[data.id].mesh.userData.hpBar = newLabel.userData.hpBar;
+                    
+                    // Ricoloriamo in base al team
+                    let baseColor = 0x800000;
+                    if (data.username.includes('[RED]')) baseColor = 0xb71c1c;
+                    else if (data.username.includes('[BLK]')) baseColor = 0x111111;
+                    else if (data.username.includes('[GRN]')) baseColor = 0x76ff03;
+                    else if (data.username.includes('[PUR]')) baseColor = 0x9c27b0;
+                    
+                    otherPlayers[data.id].mesh.children.forEach(c => {
+                        if(c.material && c.geometry.type === 'BoxGeometry' && c.position.y > 0 && c.position.y < 5) {
+                            c.material.color.setHex(baseColor);
+                        }
+                    });
+                }
             });
 
             socket.on('playerDisconnected', (id) => { 
@@ -316,30 +347,22 @@
             mainMenu.style.display = 'none';
             gameUI.style.display = 'block';
 
-            // Logica Spettatore
             if (mode === 'SPECTATOR') {
                 document.getElementById('action-bar').style.display = 'none';
                 document.getElementById('ui-container').style.display = 'none';
                 document.getElementById('crosshair').style.display = 'none';
                 document.getElementById('spectator-msg').style.display = 'block';
-                // Invia al server
                 socket.emit('joinGame', { username: `[SPEC] ${myUsername}` });
-                // Rendi me stesso invisibile e disattiva fisica (simulato lato client per ora)
                 if(playerMesh) playerMesh.visible = false;
             } else {
-                // Modalità Gioco
                 document.getElementById('action-bar').style.display = 'flex';
                 document.getElementById('ui-container').style.display = 'block';
                 document.getElementById('crosshair').style.display = 'block';
                 document.getElementById('spectator-msg').style.display = 'none';
                 if(playerMesh) playerMesh.visible = true;
 
-                // Aggiungi prefisso al nome per simulare le squadre sul server (visto che non tocchiamo server.js)
                 let finalName = myUsername;
-                /* NOTA: Poiché non possiamo modificare il server per salvare 'team' e 'mode',
-                   inviamo il tag squadra nel nome per farlo vedere agli altri */
                 if (mode === 'TEAM' && team) {
-                    // Abbreviazioni per non allungare troppo
                     const tag = team === 'ROSIKONI' ? '[RED]' : team === 'TRIMONI' ? '[BLK]' : team === 'FATTONI' ? '[GRN]' : '[PUR]';
                     finalName = `${tag} ${myUsername}`;
                 } else if (mode === 'FFA') {
@@ -347,56 +370,47 @@
                 }
 
                 socket.emit('joinGame', { username: finalName });
-                
-                // Attiva Pointer Lock per giocare
                 document.body.requestPointerLock();
             }
         }
 
         function returnToMenu() {
             document.exitPointerLock();
-            // Resetta UI
-            gameUI.style.display = 'none';
-            mainMenu.style.display = 'flex';
-            resetMenu();
-            
-            // Disconnetti/Riconnetti logicamente o ricarica (più semplice ricaricare per pulire stato)
             location.reload(); 
         }
 
         function updateMenuLists(players) {
             // Pulisci liste
             const lists = {
-                ffa: [], teams: [], spectator: [],
+                ffa: [], spectator: [],
                 rosikoni: [], trimoni: [], fattoni: [], squagliati: []
             };
 
             Object.values(players).forEach(p => {
                 const name = p.username.toUpperCase();
+                // Riconosce il tag nel nome e lo mette nella lista giusta
                 if (name.includes('[SPEC]')) lists.spectator.push(name.replace('[SPEC]', '').trim());
                 else if (name.includes('[RED]')) lists.rosikoni.push(name.replace('[RED]', '').trim());
                 else if (name.includes('[BLK]')) lists.trimoni.push(name.replace('[BLK]', '').trim());
                 else if (name.includes('[GRN]')) lists.fattoni.push(name.replace('[GRN]', '').trim());
                 else if (name.includes('[PUR]')) lists.squagliati.push(name.replace('[PUR]', '').trim());
-                else if (name.includes('[FFA]')) lists.ffa.push(name.replace('[FFA]', '').trim());
-                else lists.ffa.push(name); // Default a FFA se nessun tag
+                else lists.ffa.push(name.replace('[FFA]', '').trim());
             });
 
             // Aggiorna HTML Menu
             document.getElementById('list-ffa').innerText = "Giocatori: " + (lists.ffa.join(', ') || "-");
             document.getElementById('list-spectator').innerText = "Osservatori: " + (lists.spectator.join(', ') || "-");
             
-            // Totale in Team mode
             const totalTeam = lists.rosikoni.length + lists.trimoni.length + lists.fattoni.length + lists.squagliati.length;
             document.getElementById('list-teams').innerText = "In Squadra: " + totalTeam;
 
-            document.getElementById('list-rosikoni').innerText = lists.rosikoni.join(', ');
-            document.getElementById('list-trimoni').innerText = lists.trimoni.join(', ');
-            document.getElementById('list-fattoni').innerText = lists.fattoni.join(', ');
-            document.getElementById('list-squagliati').innerText = lists.squagliati.join(', ');
+            document.getElementById('list-rosikoni').innerText = lists.rosikoni.join('\n');
+            document.getElementById('list-trimoni').innerText = lists.trimoni.join('\n');
+            document.getElementById('list-fattoni').innerText = lists.fattoni.join('\n');
+            document.getElementById('list-squagliati').innerText = lists.squagliati.join('\n');
         }
 
-        // --- GIOCO 3D (Logic from previous file) ---
+        // --- GIOCO 3D ---
         const otherPlayers = {}; 
         
         const WORLD_SEED = 123456;
@@ -442,34 +456,51 @@
 
         // Setup Buttons (In-Game)
         document.getElementById('menu-btn').addEventListener('click', returnToMenu);
+        
+        // --- LOGICA RESPAWN CORRETTA ---
         document.getElementById('reset-btn').addEventListener('click', () => {
-             // Respawn Logic: Reset position, Hp, but stay in game
+             // Se sei morto, ti riporta in vita allo spawn SENZA uscire
              if(playerStats.isDead) {
-                 playerStats.isDead = false; playerStats.hp = playerStats.maxHp;
+                 playerStats.isDead = false; 
+                 playerStats.hp = playerStats.maxHp;
+                 playerStats.mana = playerStats.maxMana;
+                 playerStats.stamina = playerStats.maxStamina;
+                 
                  playerMesh.visible = (currentGameMode !== 'SPECTATOR');
-                 playerMesh.position.set(0, 6, 0); velocity.set(0,0,0);
+                 playerMesh.position.set(0, 6, 0); 
+                 velocity.set(0,0,0);
+                 
                  document.getElementById('message').style.display = "none";
+                 
                  if(currentGameMode !== 'SPECTATOR') document.body.requestPointerLock();
+                 
+                 // Informa gli altri che sei vivo (opzionale, muovendoti si aggiorna da solo)
+                 updateUI();
              } else {
+                 // Se sei vivo ma buggato, resetta solo posizione
                  playerMesh.position.set(0, 6, 0); velocity.set(0,0,0);
              }
         });
+
         document.getElementById('change-name-btn').addEventListener('click', () => { document.exitPointerLock(); document.getElementById('login-modal').style.display = 'block'; });
         document.getElementById('btn-login').addEventListener('click', () => {
             const newName = document.getElementById('login-input').value;
             if(newName) { 
                 myUsername = newName; 
+                // Manteniamo il tag squadra se presente
+                if(currentGameMode === 'TEAM' && currentTeam) {
+                    const tag = currentTeam === 'ROSIKONI' ? '[RED]' : currentTeam === 'TRIMONI' ? '[BLK]' : currentTeam === 'FATTONI' ? '[GRN]' : '[PUR]';
+                    if(!myUsername.includes('[')) myUsername = `${tag} ${myUsername}`;
+                }
                 if(socket) socket.emit('updateUsername', myUsername);
             }
             document.getElementById('login-modal').style.display = 'none';
             document.body.requestPointerLock();
         });
 
-        // Setup Socket Listeners (Copied logic)
         function setupGameSocketEvents() {
             socket.on('serverMsg', (msg) => { addToLog(msg, 'server-msg'); });
             socket.on('forcePositionUpdate', () => { if (myId && !playerStats.isDead) { const animState = isSprinting ? 'run' : (moveForward || moveBackward) ? 'walk' : 'idle'; socket.emit('playerMovement', { position: playerMesh.position, rotation: { x: playerMesh.rotation.x, y: playerMesh.rotation.y, z: playerMesh.rotation.z }, animState: animState, weaponMode: weaponMode }); } });
-            socket.on('updateUsername', (data) => { if (otherPlayers[data.id]) { otherPlayers[data.id].username = data.username; const oldLabel = otherPlayers[data.id].mesh.children.find(c => c.userData.isLabel); if (oldLabel) otherPlayers[data.id].mesh.remove(oldLabel); const newLabel = createPlayerLabel(data.username); newLabel.position.y = 14; newLabel.userData.isLabel = true; otherPlayers[data.id].mesh.add(newLabel); otherPlayers[data.id].mesh.userData.hpBar = newLabel.userData.hpBar; } });
             socket.on('playerMoved', (playerInfo) => { if (otherPlayers[playerInfo.id]) { const p = otherPlayers[playerInfo.id]; p.mesh.userData.targetPos = playerInfo.position; p.mesh.userData.targetRot = playerInfo.rotation; p.mesh.userData.animState = playerInfo.animState; if(p.mesh.userData.weaponMode !== playerInfo.weaponMode) { p.mesh.userData.weaponMode = playerInfo.weaponMode; updateOpponentWeaponVisuals(otherPlayers[playerInfo.id], playerInfo.weaponMode); } } });
             socket.on('updateEnemyBlock', (data) => { if (otherPlayers[data.id]) { otherPlayers[data.id].mesh.userData.isBlocking = data.isBlocking; updateEnemyShield(otherPlayers[data.id], data.isBlocking); } });
             socket.on('remoteEffect', (data) => { if (otherPlayers[data.id]) { let color = 0xffffff; if(data.type === 'heal') color = 0x00ff00; else if(data.type === 'mana') color = 0x0000ff; else if(data.type === 'stamina') color = 0xffff00; spawnParticles(otherPlayers[data.id].mesh.position, color, 15, 15, 0.4, false); const light = new THREE.PointLight(color, 5, 20); light.position.copy(otherPlayers[data.id].mesh.position).add(new THREE.Vector3(0,5,0)); scene.add(light); setTimeout(() => scene.remove(light), 300); if(data.type === 'heal') playSound('heal', otherPlayers[data.id].mesh.position); } });
@@ -489,7 +520,7 @@
         let keyToRebind = null;
         function initKeybindUI() { const list = document.getElementById('bindings-list'); if(!list) return; list.innerHTML = ''; for (const [action, code] of Object.entries(KEYBINDS)) { const row = document.createElement('div'); row.className = 'key-row'; const label = document.createElement('span'); label.innerText = KEY_NAMES_MAP[action] || action; const btn = document.createElement('button'); btn.className = 'key-btn'; btn.innerText = code.replace('Key', '').replace('Digit', ''); btn.onclick = () => startRebinding(action, btn); row.appendChild(label); row.appendChild(btn); list.appendChild(row); } updateActionLabels(); }
         function startRebinding(action, btnElement) { if(keyToRebind) return; keyToRebind = action; btnElement.classList.add('listening'); btnElement.innerText = 'PREMI...'; const handler = (e) => { e.preventDefault(); e.stopPropagation(); KEYBINDS[action] = e.code; saveKeybinds(KEYBINDS); btnElement.innerText = e.code.replace('Key', '').replace('Digit', ''); btnElement.classList.remove('listening'); keyToRebind = null; document.removeEventListener('keydown', handler); updateActionLabels(); }; document.addEventListener('keydown', handler, { once: true }); }
-        function updateActionLabels() { const set = (id, action) => { const el = document.querySelector(id + ' .key-label'); if(el) el.innerText = KEYBINDS[action].replace('Key', '').replace('Digit', '').replace('ShiftLeft', 'SHFT').replace('Space', 'SPC'); }; set('#slot-q', 'WEAPON_SWITCH'); set('#slot-1', 'SPELL_1'); set('#slot-2', 'SPELL_2'); set('#slot-3', 'SPELL_3'); set('#slot-4', 'SPELL_4'); set('#slot-r', 'HEAL'); }
+        function updateActionLabels() { const set = (id, action) => { const el = document.querySelector(id + ' .key-label'); if(el) el.innerText = KEYBINDS[action].replace('Key', '').replace('Digit', '').replace('ShiftLeft', 'SHFT').replace('Space', 'SPC'); }; set('#slot-q', 'WEAPON_SWITCH'); set('#slot-1', 'SPELL_1'); set('#slot-2', 'SPELL_2'); set('#slot-3', 'SPELL_3'); set('#slot-4', 'SPELL_4'); set('#slot-r', 'HEAL'); set('#slot-5', 'CONVERT_1'); set('#slot-6', 'CONVERT_2'); set('#slot-7', 'CONVERT_3'); }
         document.getElementById('keys-btn').addEventListener('click', (e) => { e.stopPropagation(); document.getElementById('bindings-modal').style.display='block'; document.exitPointerLock(); });
         document.getElementById('close-bindings').addEventListener('click', (e) => { e.stopPropagation(); document.getElementById('bindings-modal').style.display='none'; document.body.requestPointerLock(); });
 
@@ -511,12 +542,11 @@
             toggleWeapon(true); updateActionBarUI(); initKeybindUI(); animate();
         }
 
-        // ... MESH CREATION FUNCTIONS (Helmet, Player, Sword, etc) ...
+        // ... MESH CREATION FUNCTIONS ...
         function createHelmet(parent) { const helmetGroup = new THREE.Group(); const helmGeo = new THREE.BoxGeometry(3.2, 3.4, 3.4); const helmMat = new THREE.MeshStandardMaterial({color: 0x555555, metalness: 0.8, roughness: 0.2}); const helm = new THREE.Mesh(helmGeo, helmMat); helmetGroup.add(helm); const visorGeo = new THREE.BoxGeometry(2.8, 0.5, 3.6); const visorMat = new THREE.MeshStandardMaterial({color: 0x111111, metalness: 0.9}); const visor = new THREE.Mesh(visorGeo, visorMat); visor.position.set(0, 0.2, -0.2); helmetGroup.add(visor); const crestGeo = new THREE.BoxGeometry(0.4, 1.5, 3.8); const crestMat = new THREE.MeshLambertMaterial({color: 0xc0392b}); const crest = new THREE.Mesh(crestGeo, crestMat); crest.position.y = 2.2; helmetGroup.add(crest); helmetGroup.position.y = 8.5; parent.add(helmetGroup); return helmetGroup; }
         
         function addOtherPlayer(info) {
             const mesh = new THREE.Group();
-            // Color based on Team tag in name (since server doesn't send specific data)
             let baseColor = 0x800000;
             if (info.username.includes('[RED]')) baseColor = 0xb71c1c;
             else if (info.username.includes('[BLK]')) baseColor = 0x111111;
@@ -537,7 +567,6 @@
             const shield = new THREE.Mesh(new THREE.BoxGeometry(4, 8, 1), new THREE.MeshBasicMaterial({ color: 0x00aaff, transparent: true, opacity: 0.4 })); shield.position.set(3, -2, 0); shield.rotation.y = -Math.PI/2; shield.visible = false; armL.add(shield);
             mesh.position.set(info.position.x, info.position.y, info.position.z);
             
-            // Hide mesh if Spectator
             if(info.username.includes('[SPEC]')) mesh.visible = false;
 
             const label = createPlayerLabel(info.username); label.position.y = 14; label.userData.isLabel = true; mesh.add(label); mesh.userData.hpBar = label.userData.hpBar; 
@@ -724,17 +753,15 @@
 
         function updatePhysics(delta) {
             if (currentGameMode === 'SPECTATOR') {
-                 // Fly Camera Logic for Spectator
-                 let speed = SETTINGS.speed * 2.0 * delta; // Faster in spectator
+                 let speed = SETTINGS.speed * 2.0 * delta; 
                  if (isSprinting) speed *= 2.0;
                  const direction = new THREE.Vector3();
                  if (moveForward) direction.z -= 1; if (moveBackward) direction.z += 1;
                  if (moveLeft) direction.x -= 1; if (moveRight) direction.x += 1;
-                 if (canJump) velocity.y += speed * 0.5; // Space to go up in spec
+                 if (canJump) velocity.y += speed * 0.5; 
                  
                  direction.applyEuler(euler);
                  playerMesh.position.addScaledVector(direction, speed);
-                 // Reset gravity effects for spectator
                  velocity.y = 0; 
                  if (socket && myId) { socket.emit('playerMovement', { position: playerMesh.position, rotation: { x: playerMesh.rotation.x, y: playerMesh.rotation.y, z: playerMesh.rotation.z }, animState: 'idle', weaponMode: 'ranged' }); }
                  return;
@@ -773,12 +800,11 @@
         function updateCamera() {
             const headPos = playerMesh.position.clone().add(new THREE.Vector3(0,8.5,0));
             if (currentGameMode === 'SPECTATOR') {
-                 // Free cam logic override
                  camera.position.copy(playerMesh.position).add(new THREE.Vector3(0, 10, 0));
                  camera.quaternion.setFromEuler(euler);
             } else if (weaponMode === 'ranged') { 
                 camera.position.copy(headPos).addScaledVector(new THREE.Vector3(0,0,-1).applyEuler(euler), 0.5); camera.quaternion.setFromEuler(euler); 
-                playerMesh.visible = (currentGameMode !== 'SPECTATOR'); // Ranged: see arms (or nothing if spectator)
+                playerMesh.visible = (currentGameMode !== 'SPECTATOR'); 
             } else { 
                 const offset = new THREE.Vector3(0, 5, 25).applyEuler(new THREE.Euler(euler.x, euler.y, 0, 'YXZ')); 
                 camera.position.copy(headPos).add(offset); camera.lookAt(headPos); 
@@ -791,7 +817,7 @@
                 switch(e.code) {
                     case KEYBINDS.MOVE_FORWARD: moveForward=true; break; case KEYBINDS.MOVE_LEFT: moveLeft=true; break; case KEYBINDS.MOVE_BACKWARD: moveBackward=true; break; case KEYBINDS.MOVE_RIGHT: moveRight=true; break;
                     case KEYBINDS.JUMP: 
-                         if (currentGameMode === 'SPECTATOR') { canJump = true; } // Fly up
+                         if (currentGameMode === 'SPECTATOR') { canJump = true; } 
                          else { const now = performance.now(); if(canJump && (now - lastJumpTime > SETTINGS.jumpCooldown) && playerStats.stamina >= SETTINGS.jumpCost) { velocity.y += SETTINGS.jumpForce; playerStats.stamina -= SETTINGS.jumpCost; lastJumpTime = now; canJump = false; } }
                          break;
                     case KEYBINDS.SPRINT: isSprinting=true; break; 
